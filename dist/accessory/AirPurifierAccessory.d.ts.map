@@ -1,0 +1,1 @@
+{"version":3,"file":"AirPurifierAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/AirPurifierAccessory.ts"],"names":[],"mappings":"AACA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAiB5C,MAAM,CAAC,OAAO,OAAO,oBAAqB,SAAQ,aAAa;IAE7D,cAAc;IAId,iBAAiB;IAuBjB,WAAW;IAKX,iBAAiB;IAQjB,sBAAsB;IAStB,qBAAqB;IAcrB,oBAAoB;CAoBrB"}

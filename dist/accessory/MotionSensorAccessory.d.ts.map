@@ -1,0 +1,1 @@
+{"version":3,"file":"MotionSensorAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/MotionSensorAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAO5C,MAAM,CAAC,OAAO,OAAO,qBAAsB,SAAQ,aAAa;IAE9D,cAAc;IAId,iBAAiB;CAIlB"}

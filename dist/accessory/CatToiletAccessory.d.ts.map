@@ -1,0 +1,1 @@
+{"version":3,"file":"CatToiletAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/CatToiletAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAmB5C,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,aAAa;IAE3D,cAAc;IAId,iBAAiB;IAwBjB,WAAW;IAKX,eAAe,CAAC,WAAW,EAAE,MAAM,EAAE,EAAE,IAAI,EAAE,MAAM;IAanD,cAAc;IAwBd,wBAAwB;IAsBxB,0BAA0B;IAqB1B,cAAc;CAcf"}

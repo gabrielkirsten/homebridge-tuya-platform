@@ -1,0 +1,1 @@
+{"version":3,"file":"ContactSensorAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/ContactSensorAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAM5C,MAAM,CAAC,OAAO,OAAO,aAAc,SAAQ,aAAa;IAEtD,cAAc;IAId,iBAAiB;CAgBlB"}

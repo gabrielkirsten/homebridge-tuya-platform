@@ -1,0 +1,1 @@
+{"version":3,"file":"FanAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/FanAccessory.ts"],"names":[],"mappings":"AACA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAsB5C,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,aAAa;IAErD,cAAc;IAId,iBAAiB;IA4DjB,cAAc;IAQd,UAAU;IAMV,gBAAgB;IAUhB,YAAY;IAMZ,iBAAiB;IAQjB,sBAAsB;IAQtB,0BAA0B;CAiB3B"}

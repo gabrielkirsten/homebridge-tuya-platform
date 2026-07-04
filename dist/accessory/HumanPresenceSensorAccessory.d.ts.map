@@ -1,0 +1,1 @@
+{"version":3,"file":"HumanPresenceSensorAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/HumanPresenceSensorAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAO5C,MAAM,CAAC,OAAO,OAAO,4BAA6B,SAAQ,aAAa;IAErE,cAAc;IAId,iBAAiB;CAIlB"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"MotionDetected.d.ts","sourceRoot":"","sources":["../../../src/accessory/characteristic/MotionDetected.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,YAAY,CAAC;AACrC,OAAO,EAAE,gBAAgB,EAAwB,MAAM,yBAAyB,CAAC;AACjF,OAAO,aAAa,MAAM,kBAAkB,CAAC;AAE7C,wBAAgB,uBAAuB,CAAC,SAAS,EAAE,aAAa,EAAE,OAAO,CAAC,EAAE,OAAO,EAAE,MAAM,CAAC,EAAE,gBAAgB,QAkB7G"}

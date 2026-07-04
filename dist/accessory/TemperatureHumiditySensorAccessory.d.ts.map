@@ -1,0 +1,1 @@
+{"version":3,"file":"TemperatureHumiditySensorAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/TemperatureHumiditySensorAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAU5C,MAAM,CAAC,OAAO,OAAO,kCAAmC,SAAQ,aAAa;IAE3E,cAAc;IAId,iBAAiB,IAAI,IAAI;CAK1B"}

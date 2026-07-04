@@ -1,0 +1,1 @@
+{"version":3,"file":"SecuritySystemAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/SecuritySystemAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAS5C,MAAM,CAAC,OAAO,OAAO,uBAAwB,SAAQ,aAAa;IAEhE,cAAc;IAId,UAAU,UAAS;IAEnB,iBAAiB;CAWlB"}

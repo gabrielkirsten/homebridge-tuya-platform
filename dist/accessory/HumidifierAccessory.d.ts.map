@@ -1,0 +1,1 @@
+{"version":3,"file":"HumidifierAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/HumidifierAccessory.ts"],"names":[],"mappings":"AAEA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAiB5C,MAAM,CAAC,OAAO,OAAO,mBAAoB,SAAQ,aAAa;IAE5D,cAAc;IAId,iBAAiB;IAyBjB,WAAW;IAMX,oBAAoB;IAUpB,qBAAqB;IAgBrB,4CAA4C;IA8B5C,sBAAsB;IAsChB,sBAAsB;CAS7B"}

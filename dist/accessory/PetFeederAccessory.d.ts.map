@@ -1,0 +1,1 @@
+{"version":3,"file":"PetFeederAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/PetFeederAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAgB5C,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,aAAa;IAE3D,cAAc;IAId,iBAAiB;IAYjB,WAAW;IAKX,cAAc;IAad,kBAAkB;IAelB,iBAAiB;IAejB,mBAAmB;IAenB,iBAAiB;IAejB,0BAA0B;IAc1B,mBAAmB;IAcnB,kBAAkB;CAanB"}

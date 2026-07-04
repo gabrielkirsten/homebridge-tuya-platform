@@ -1,0 +1,1 @@
+{"version":3,"file":"LeakSensorAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/LeakSensorAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAM5C,MAAM,CAAC,OAAO,OAAO,UAAW,SAAQ,aAAa;IAEnD,cAAc;IAId,iBAAiB;CAuBlB"}

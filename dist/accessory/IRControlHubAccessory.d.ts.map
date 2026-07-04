@@ -1,0 +1,1 @@
+{"version":3,"file":"IRControlHubAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/IRControlHubAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,sBAAsB,CAAC;AACxD,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAS5C,MAAM,CAAC,OAAO,OAAO,qBAAsB,SAAQ,aAAa;IAE9D,cAAc;IAId,iBAAiB;IAKjB,iBAAiB;IAIX,oBAAoB,CAAC,MAAM,EAAE,gBAAgB,EAAE;CAQtD"}

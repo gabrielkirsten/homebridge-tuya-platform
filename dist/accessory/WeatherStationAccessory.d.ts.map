@@ -1,0 +1,1 @@
+{"version":3,"file":"WeatherStationAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/WeatherStationAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAE5C,MAAM,CAAC,OAAO,OAAO,kCAAmC,SAAQ,aAAa;IAC3E,iBAAiB,IAAI,IAAI;IA0CzB,OAAO,CAAC,qBAAqB;CAc9B"}

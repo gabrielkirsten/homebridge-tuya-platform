@@ -1,0 +1,1 @@
+{"version":3,"file":"SceneSwitchAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/SceneSwitchAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAwB,MAAM,sBAAsB,CAAC;AAC9E,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAG5C,MAAM,CAAC,OAAO,OAAO,oBAAqB,SAAQ,aAAa;IAE7D,iBAAiB;IAQjB,eAAe,CAAC,MAAM,EAAE,gBAAgB,EAAE,IAAI,EAAE,MAAM;CA8BvD"}

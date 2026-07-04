@@ -1,0 +1,1 @@
+{"version":3,"file":"CurrentTemperature.d.ts","sourceRoot":"","sources":["../../../src/accessory/characteristic/CurrentTemperature.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,YAAY,CAAC;AACrC,OAAO,EAAE,gBAAgB,EAAmC,MAAM,yBAAyB,CAAC;AAE5F,OAAO,aAAa,MAAM,kBAAkB,CAAC;AAE7C,wBAAgB,2BAA2B,CAAC,SAAS,EAAE,aAAa,EAAE,OAAO,CAAC,EAAE,OAAO,EAAE,MAAM,CAAC,EAAE,gBAAgB,QA0BjH"}

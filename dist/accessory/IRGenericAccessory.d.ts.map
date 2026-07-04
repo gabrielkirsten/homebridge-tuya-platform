@@ -1,0 +1,1 @@
+{"version":3,"file":"IRGenericAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/IRGenericAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,uBAAuB,EAAE,MAAM,sBAAsB,CAAC;AAC/D,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAG5C,MAAM,CAAC,OAAO,OAAO,kBAAmB,SAAQ,aAAa;IAE3D,iBAAiB;IAejB,eAAe,CAAC,GAAG,EAAE,uBAAuB;IAqBtC,oBAAoB,CAAC,GAAG,EAAE,uBAAuB;CAUxD"}

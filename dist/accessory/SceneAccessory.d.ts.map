@@ -1,0 +1,1 @@
+{"version":3,"file":"SceneAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/SceneAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,YAAY,CAAC;AAE/C,OAAO,EAAE,YAAY,EAAE,MAAM,aAAa,CAAC;AAC3C,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAE5C,MAAM,CAAC,OAAO,OAAO,cAAe,SAAQ,aAAa;gBAE3C,QAAQ,EAAE,YAAY,EAAE,SAAS,EAAE,iBAAiB;CAyBjE"}

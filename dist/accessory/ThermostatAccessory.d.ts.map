@@ -1,0 +1,1 @@
+{"version":3,"file":"ThermostatAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/ThermostatAccessory.ts"],"names":[],"mappings":"AAEA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAa5C,MAAM,CAAC,OAAO,OAAO,mBAAoB,SAAQ,aAAa;IAE5D,cAAc;IAId,iBAAiB;IASjB,WAAW;IAKX,qBAAqB;IA8CrB,oBAAoB;IAqFpB,mBAAmB;CAqCpB"}

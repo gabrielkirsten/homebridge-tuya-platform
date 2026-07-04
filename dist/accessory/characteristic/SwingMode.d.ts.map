@@ -1,0 +1,1 @@
+{"version":3,"file":"SwingMode.d.ts","sourceRoot":"","sources":["../../../src/accessory/characteristic/SwingMode.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,YAAY,CAAC;AACrC,OAAO,EAAE,gBAAgB,EAAE,MAAM,yBAAyB,CAAC;AAC3D,OAAO,aAAa,MAAM,kBAAkB,CAAC;AAE7C,wBAAgB,kBAAkB,CAAC,SAAS,EAAE,aAAa,EAAE,OAAO,EAAE,OAAO,EAAE,MAAM,CAAC,EAAE,gBAAgB,QAiBvG"}

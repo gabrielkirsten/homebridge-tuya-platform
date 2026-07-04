@@ -1,0 +1,1 @@
+{"version":3,"file":"DehumidifierAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/DehumidifierAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAmB5C,MAAM,CAAC,OAAO,OAAO,qBAAsB,SAAQ,aAAa;IAE9D,cAAc;IAId,iBAAiB;IAiBjB,WAAW;IAMX,qBAAqB;IAgBrB,oBAAoB;CAUrB"}

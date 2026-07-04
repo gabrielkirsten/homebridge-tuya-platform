@@ -1,0 +1,1 @@
+{"version":3,"file":"SwitchAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/SwitchAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAwB,MAAM,sBAAsB,CAAC;AAC9E,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAkB5C,MAAM,CAAC,OAAO,OAAO,eAAgB,SAAQ,aAAa;IAExD,cAAc;IAId,iBAAiB;IAyBjB,WAAW;IAIX,eAAe,CAAC,MAAM,EAAE,gBAAgB,EAAE,IAAI,EAAE,MAAM;IAqBtD,gBAAgB;CA+BjB"}

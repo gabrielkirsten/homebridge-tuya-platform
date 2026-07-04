@@ -1,0 +1,1 @@
+{"version":3,"file":"DoorbellAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/DoorbellAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,sBAAsB,CAAC;AACxD,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAU5C,MAAM,CAAC,OAAO,OAAO,iBAAkB,SAAQ,aAAa;IAE1D,cAAc;IAId,iBAAiB;IA2DjB,kBAAkB;IAKZ,oBAAoB,CAAC,MAAM,EAAE,gBAAgB,EAAE;CAUtD"}

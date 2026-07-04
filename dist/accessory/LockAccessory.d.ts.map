@@ -1,0 +1,1 @@
+{"version":3,"file":"LockAccessory.d.ts","sourceRoot":"","sources":["../../src/accessory/LockAccessory.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAO5C,MAAM,CAAC,OAAO,OAAO,aAAc,SAAQ,aAAa;IAEtD,cAAc;IAId,iBAAiB;IAKjB,WAAW;IAKX,yBAAyB;IAczB,wBAAwB;CAqBzB"}
