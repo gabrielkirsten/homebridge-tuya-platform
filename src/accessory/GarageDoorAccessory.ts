@@ -1,22 +1,34 @@
+import { TuyaDeviceStatus } from '../device/TuyaDevice';
 import BaseAccessory from './BaseAccessory';
 
 const SCHEMA_CODE = {
-  CURRENT_DOOR_STATE: ['doorcontact_state'],
-  TARGET_DOOR_STATE: ['switch_1'],
+  // Physical contact sensor — noisy, used only as onGet fallback.
+  CONTACT: ['doorcontact_state'],
+  // Control command sent to the gate.
+  CONTROL: ['switch_1'],
 };
+
+// Custom DP reported by some gate controllers via MQTT but not registered in
+// the product's Function Definition (e.g. Izzy Open 2024 / ckmkzq).
+// Searched directly in the raw MQTT payload, not via getSchema().
+const NOTIFY_CODE = 'notify_portao';
+
+const TRANSITION_TIMEOUT_MS = 60 * 1000;
 
 export default class GarageDoorAccessory extends BaseAccessory {
 
+  private targetOpen: boolean | undefined;
+  private transitioning = false;
+  private transitionTimer?: NodeJS.Timeout;
+
   requiredSchema() {
-    return [SCHEMA_CODE.TARGET_DOOR_STATE];
+    return [SCHEMA_CODE.CONTROL];
   }
 
   configureServices() {
-
     this.configureCurrentDoorState();
     this.configureTargetDoorState();
   }
-
 
   mainService() {
     return this.accessory.getService(this.Service.GarageDoorOpener)
@@ -27,22 +39,21 @@ export default class GarageDoorAccessory extends BaseAccessory {
     const { OPEN, CLOSED, OPENING, CLOSING, STOPPED } = this.Characteristic.CurrentDoorState;
     this.mainService().getCharacteristic(this.Characteristic.CurrentDoorState)
       .onGet(() => {
-        const currentSchema = this.getSchema(...SCHEMA_CODE.CURRENT_DOOR_STATE);
-        const targetSchema = this.getSchema(...SCHEMA_CODE.TARGET_DOOR_STATE);
-        if (!currentSchema || !targetSchema) {
-          return STOPPED;
+        if (this.transitioning) {
+          return this.targetOpen ? OPENING : CLOSING;
         }
 
-        const currentStatus = this.getStatus(currentSchema.code)!;
-        const targetStatus = this.getStatus(targetSchema.code)!;
-        if (currentStatus.value === true && targetStatus.value === true) {
-          return OPEN;
-        } else if (currentStatus.value === false && targetStatus.value === false) {
-          return CLOSED;
-        } else if (currentStatus.value === false && targetStatus.value === true) {
-          return OPENING;
-        } else if (currentStatus.value === true && targetStatus.value === false) {
-          return CLOSING;
+        // Use contact sensor as fallback (unreliable for push, but ok for polling).
+        const contactSchema = this.getSchema(...SCHEMA_CODE.CONTACT);
+        if (contactSchema) {
+          const status = this.getStatus(contactSchema.code)!;
+          return status.value ? OPEN : CLOSED;
+        }
+
+        const controlSchema = this.getSchema(...SCHEMA_CODE.CONTROL);
+        if (controlSchema) {
+          const status = this.getStatus(controlSchema.code)!;
+          return status.value ? OPEN : CLOSED;
         }
 
         return STOPPED;
@@ -50,7 +61,7 @@ export default class GarageDoorAccessory extends BaseAccessory {
   }
 
   configureTargetDoorState() {
-    const schema = this.getSchema(...SCHEMA_CODE.TARGET_DOOR_STATE);
+    const schema = this.getSchema(...SCHEMA_CODE.CONTROL);
     if (!schema) {
       return;
     }
@@ -58,14 +69,72 @@ export default class GarageDoorAccessory extends BaseAccessory {
     const { OPEN, CLOSED } = this.Characteristic.TargetDoorState;
     this.mainService().getCharacteristic(this.Characteristic.TargetDoorState)
       .onGet(() => {
+        if (this.targetOpen !== undefined) {
+          return this.targetOpen ? OPEN : CLOSED;
+        }
         const status = this.getStatus(schema.code)!;
-        return status.value as boolean ? OPEN : CLOSED;
+        return (status.value as boolean) ? OPEN : CLOSED;
       })
       .onSet(async value => {
-        await this.sendCommands([{
-          code: schema.code,
-          value: (value === OPEN) ? true : false,
-        }]);
+        this.targetOpen = (value === OPEN);
+        this.setTransitioning(true);
+        await this.sendCommands([{ code: schema.code, value: this.targetOpen }]);
       });
+  }
+
+  async onDeviceStatusUpdate(status: TuyaDeviceStatus[]) {
+    super.onDeviceStatusUpdate(status);
+
+    // notify_portao is a custom DP not registered in the product schema but
+    // present in raw MQTT payloads — search the raw status array directly.
+    const notifyStatus = status.find(s => s.code === NOTIFY_CODE);
+    if (notifyStatus) {
+      this.handleNotify(notifyStatus.value as string);
+      return;
+    }
+
+    // doorcontact_state is noisy (sensor bounces on every gate movement).
+    // Do NOT push state updates from it — rely only on notify_portao for push,
+    // and doorcontact_state via onGet polling as fallback.
+  }
+
+  private handleNotify(value: string) {
+    const { OPEN, CLOSED } = this.Characteristic.CurrentDoorState;
+    const { OPEN: TARGET_OPEN, CLOSED: TARGET_CLOSED } = this.Characteristic.TargetDoorState;
+
+    if (value === 'Portao_1_aberto') {
+      this.setTransitioning(false);
+      this.targetOpen = true;
+      this.mainService().getCharacteristic(this.Characteristic.CurrentDoorState).updateValue(OPEN);
+      this.mainService().getCharacteristic(this.Characteristic.TargetDoorState).updateValue(TARGET_OPEN);
+    } else if (value === 'Portao_1_fechado') {
+      this.setTransitioning(false);
+      this.targetOpen = false;
+      this.mainService().getCharacteristic(this.Characteristic.CurrentDoorState).updateValue(CLOSED);
+      this.mainService().getCharacteristic(this.Characteristic.TargetDoorState).updateValue(TARGET_CLOSED);
+    } else if (value === 'Livre') {
+      // Gate finished moving — confirm final state from contact sensor.
+      const contactSchema = this.getSchema(...SCHEMA_CODE.CONTACT);
+      if (contactSchema) {
+        const contactStatus = this.getStatus(contactSchema.code);
+        if (contactStatus) {
+          const isOpen = contactStatus.value as boolean;
+          this.setTransitioning(false);
+          this.targetOpen = isOpen;
+          this.mainService().getCharacteristic(this.Characteristic.CurrentDoorState).updateValue(isOpen ? OPEN : CLOSED);
+        }
+      }
+    }
+  }
+
+  private setTransitioning(value: boolean) {
+    this.transitioning = value;
+    this.transitionTimer && clearTimeout(this.transitionTimer);
+    if (value) {
+      this.transitionTimer = setTimeout(() => {
+        this.transitioning = false;
+        this.updateAllValues();
+      }, TRANSITION_TIMEOUT_MS);
+    }
   }
 }

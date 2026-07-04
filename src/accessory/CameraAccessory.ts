@@ -46,16 +46,13 @@ export default class CameraAccessory extends BaseAccessory {
   }
 
   configureDoorbell() {
-    // Check to see if it is indeed a doorbell.
-    if (!this.getSchema(...SCHEMA_CODE.DOORBELL)) {
+    const doorbellSchema = this.getSchema(...SCHEMA_CODE.DOORBELL);
+    if (!doorbellSchema) {
       return;
     }
 
-    const schema = this.getSchema(...SCHEMA_CODE.DOORBELL_RING, ...SCHEMA_CODE.ALARM_MESSAGE);
-    if (!schema) {
-      return;
-    }
-
+    // Prefer dedicated ring event DPs; fall back to doorbell_ring_exist itself (value "1" = ring).
+    const schema = this.getSchema(...SCHEMA_CODE.DOORBELL_RING, ...SCHEMA_CODE.ALARM_MESSAGE) ?? doorbellSchema;
     configureProgrammableSwitchEvent(this, this.getDoorbellService(), schema);
   }
 
@@ -106,15 +103,21 @@ export default class CameraAccessory extends BaseAccessory {
   async onDeviceStatusUpdate(status: TuyaDeviceStatus[]) {
     super.onDeviceStatusUpdate(status);
 
-    const doorbellRingSchema = this.getSchema(...SCHEMA_CODE.DOORBELL_RING);
-    const alarmMessageSchema = this.getSchema(...SCHEMA_CODE.ALARM_MESSAGE);
-    if (this.getSchema(...SCHEMA_CODE.DOORBELL) && (doorbellRingSchema || alarmMessageSchema)) {
+    const doorbellSchema = this.getSchema(...SCHEMA_CODE.DOORBELL);
+    if (doorbellSchema) {
+      const doorbellRingSchema = this.getSchema(...SCHEMA_CODE.DOORBELL_RING);
+      const alarmMessageSchema = this.getSchema(...SCHEMA_CODE.ALARM_MESSAGE);
       const doorbellRingStatus = doorbellRingSchema && status.find(_status => _status.code === doorbellRingSchema.code);
       const alarmMessageStatus = alarmMessageSchema && status.find(_status => _status.code === alarmMessageSchema.code);
+      const doorbellExistStatus = status.find(_status => _status.code === doorbellSchema.code);
+
       if (doorbellRingStatus && (doorbellRingStatus.value as string).length > 1) { // Compared with '1' in order to filter value '$'
         onProgrammableSwitchEvent(this, this.getDoorbellService(), doorbellRingStatus);
       } else if (alarmMessageStatus && (alarmMessageStatus.value as string).length > 1) {
         onProgrammableSwitchEvent(this, this.getDoorbellService(), alarmMessageStatus);
+      } else if (!doorbellRingSchema && !alarmMessageSchema && doorbellExistStatus && doorbellExistStatus.value === '1') {
+        // Fallback: use doorbell_ring_exist value "1" as the ring trigger.
+        onProgrammableSwitchEvent(this, this.getDoorbellService(), doorbellExistStatus);
       }
     }
 
